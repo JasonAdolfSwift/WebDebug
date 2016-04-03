@@ -1,0 +1,14 @@
+b 9
+p i
+p ch
+p &address
+p &address
+x/44xw 0x1111ffff
+p i
+p &address
+p &address
+x/44xw 0x1111ffff
+p i
+p &address
+p &address
+x/44xw 0x1111ffff

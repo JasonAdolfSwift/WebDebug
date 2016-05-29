@@ -120,10 +120,11 @@
     <script>
         function saveCode(code)
         {
+            alert(0)
             $.ajax({
                 url: "/saveCode",
                 type: "POST",
-                dataType:{
+                data:{
                     "code" : code
                 },
                 success: function(){

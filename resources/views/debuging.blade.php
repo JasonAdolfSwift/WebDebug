@@ -74,12 +74,13 @@
             <tr align="right">
                 <button type="button" onclick="stopDebug()">停止演示</button>
             </tr>
+            <tr align="right">
+                <button type="button" onclick="saveCode({{$code}})">保存代码</button>
+            </tr>
         </table>
     </div>
 
     <hr>
-
-    <table></table>
 
     <!--script>
         function getVars()
@@ -113,6 +114,25 @@
                     alert(a + " " + b + " " + c)
                 }
             });
+        }
+    </script>
+
+    <script>
+        function saveCode(code)
+        {
+            $.ajax({
+                url: "/saveCode",
+                type: "POST",
+                dataType:{
+                    "code" : code
+                },
+                success: function(){
+                    alert("保存成功")
+                },
+                error: function (a, b, c) {
+                    alert("保存失败:", a + "," + b +"," + c)
+                }
+            })
         }
     </script>
 

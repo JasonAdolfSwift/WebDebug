@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Code;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,5 +23,17 @@ class DebugController extends Controller
         }
 
         return view('start_debug')->with('code', $code);
+    }
+
+    public function save()
+    {
+        $code = $_POST["code"];
+
+        $record = new Code();
+
+        $record->code = $code;
+        $record->error_type = "Null Pointer";
+
+        $record->save();
     }
 }

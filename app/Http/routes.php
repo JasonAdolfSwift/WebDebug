@@ -20,4 +20,5 @@ Route::post('/debug', 'DebugController@index');
 Route::post('/debug/monitor', 'MonitorController@index');
 Route::post('/debug/debuging', 'DebugingController@index');
 Route::post('/debug/next', 'NextController@add');
+Route::post('/saveCode', 'DebugController@save');
 

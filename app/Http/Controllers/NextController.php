@@ -24,6 +24,8 @@ class NextController extends Controller
         $tmp = $_GET['var'];
         $respond = array();
 
+        exec("$run_path n");
+
         if ( $tmp != "..." )
         {
             $respond['var'] = "";
@@ -49,6 +51,7 @@ class NextController extends Controller
 
                 $respond['var'] = strval($respond['var']).$var."==>".$output."\n";
 
+                clearstatcache();
                 fclose($output_file);
             }
         }
@@ -77,8 +80,9 @@ class NextController extends Controller
                     fclose($real_output_file);
                 }
 
-                $respond['var_add'] = strval($respond['var_add']).$var_add."==>".$output."\n";
+                $respond['var_add'] = strval($respond['var_add'])."&".$var_add."==>".$output."\n";
 
+                clearstatcache();
                 fclose($output_file);
             }
 
@@ -108,6 +112,7 @@ class NextController extends Controller
 
             $respond['mem'] = $output."\n";
 
+            clearstatcache();
             fclose($output_file);
         }
 

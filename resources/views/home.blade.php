@@ -1,7 +1,7 @@
 @extends('head')
 @section('content')
     <form name="code" action="/code" method="POST">
-        <div>
+        <div style="width:100%; margin: 5px 500px">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="position:relative">
                 <tr>
                     <td width="55%">
@@ -11,10 +11,13 @@
                 </tr>
             </table>
         </div>
-        <em class="block" id="msg2">文本框没有内容。</em>
+        <hr>
         <input type="submit" value="编译">
         <input type="hidden" name="_token"         value="{csrf_token()}"/>
+        <em class="block" id="msg2">文本框没有内容。</em>
     </form>
+    <hr>
+    <a href="/showSavedCode"><input type="button" value="查看已保存的代码"></a>
     <script type="text/javascript">
         var msgA=["msg1","msg2","msg3","msg4"];
         var c=["c1","c2","c3","c4"];

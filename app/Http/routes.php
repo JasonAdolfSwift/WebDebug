@@ -13,6 +13,8 @@
 Route::get('/',  'HomePageController@index');
 Route::get('/debug/next',  'NextController@index');
 Route::get('/debug/stop', 'NextController@stop');
+Route::get('/showSavedCode', 'HomePageController@show');
+Route::get('/codeDetail', 'HomePageController@codeDetail');
 
 Route::post('/code', 'CompileCodeController@index');
 Route::post('/run', 'ExecuteController@index');

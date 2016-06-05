@@ -1,41 +1,54 @@
 @extends('head')
 @section('content')
     @if ( $ret_val == 0 )
-        <div>
+        <div style="width:90%; margin: 5px 500px">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="position:relative">
                 <tr>
-                    <td width="55%">
+                    <td width="50%">
                         <div id="ol"><textarea cols="2" rows="10" id="li" disabled></textarea></div>
                         <textarea name="code" cols="60" rows="10" wrap="off" id="c2" readonly="readonly">{{$code}}</textarea>
                     </td>
                 </tr>
             </table>
+            <h2>编译成功!</h2>
         </div>
         <hr>
-
-        <h2>编译成功!</h2>
-        <hr>
-        <form name="execute" action="/run" method="post">
-            <input type="submit" value="执行" style="width:80px;height:40px">
-        </form>
-        <form name="debug" action="/debug" method="post">
-            <input type="submit" value="单步执行" style="width:80px;height:40px">
-        </form>
+        <div style="width:20%; margin: 5px 500px">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="position:relative">
+                <tr>
+                    <td>
+                        <form name="execute" action="/run" method="post">
+                            <input type="submit" value="执行" style="width:80px;height:40px">
+                        </form>
+                    </td>
+                    <td>
+                        <form name="debug" action="/debug" method="post">
+                            <input type="submit" value="单步执行" style="width:80px;height:40px">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
     @else
-        <div>
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="position:relative">
-                <tr>
-                    <td width="55%">
-                        <div id="ol"><textarea cols="2" rows="10" id="li" disabled></textarea></div>
-                        <textarea name="code" cols="60" rows="10" wrap="off" id="c2" readonly="readonly">{{$code}}</textarea>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <hr>
-        <h2>编译失败...</h2>
-        <p>错误信息</p>
-        <textarea>{{$output}}</textarea>
+        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="position:relative">
+            <tr>
+                <div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="position:relative">
+                        <tr>
+                            <td width="55%">
+                                <div id="ol"><textarea cols="2" rows="10" id="li" disabled></textarea></div>
+                                <textarea name="code" cols="60" rows="10" wrap="off" id="c2" readonly="readonly">{{$code}}</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </tr>
+            <tr>
+                <h2>编译失败...</h2>
+                <p>错误信息</p>
+                <textarea rows="20">{{$output}}</textarea>
+            </tr>
+        </table>
     @endif
     <script type="text/javascript">
         var msgA=["msg1","msg2","msg3","msg4"];

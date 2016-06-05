@@ -28,11 +28,12 @@ class DebugController extends Controller
     public function save()
     {
         $code = $_POST["code"];
+        $error_type = $_POST["error_type"];
 
         $record = new Code();
 
         $record->code = $code;
-        $record->error_type = "Null Pointer";
+        $record->error_type = $error_type;
 
         $record->save();
     }

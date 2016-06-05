@@ -5,7 +5,7 @@
             <tr height="5%">
                 <td width="33%" rowspan="4">
                     <div id="ol"><textarea cols="2" rows="10" id="li" disabled></textarea></div>
-                    <textarea name="code" cols="20" rows="40" wrap="off" id="c2" readonly="readonly">{{$code}}</textarea>
+                    <textarea name="code" cols="20" rows="40" wrap="off" id="c2" readonly="readonly" class="code">{{$code}}</textarea>
                 </td>
                 <td align="left" VALIGN="top" width="20%">
                     <div id="next" name="debug_behaviour">
@@ -74,8 +74,11 @@
             <tr align="right">
                 <button type="button" onclick="stopDebug()">停止演示</button>
             </tr>
-            <tr align="right">
-                <button type="button" onclick="saveCode({{$code}})">保存代码</button>
+            <tr>
+                错误类型:<input id="error_type" name="errorType" value="">
+            </tr>
+            <tr>
+                <button type="button" onclick="saveCode()">保存代码</button>
             </tr>
         </table>
     </div>
@@ -118,20 +121,29 @@
     </script>
 
     <script>
-        function saveCode(code)
-        {
-            alert(0)
+        function saveCode() {
+            var context = $('#c2').val();
+            var error_type = $('#error_type').val();
+
+            if(error_type == "")
+            {
+                error_type = "正确";
+            }
+
+            console.log(error_type);
+
             $.ajax({
                 url: "/saveCode",
                 type: "POST",
-                data:{
-                    "code" : code
+                data: {
+                    "code": context,
+                    "error_type" : error_type
                 },
-                success: function(){
+                success: function () {
                     alert("保存成功")
                 },
                 error: function (a, b, c) {
-                    alert("保存失败:", a + "," + b +"," + c)
+                    alert("保存失败:", a + "," + b + "," + c)
                 }
             })
         }
